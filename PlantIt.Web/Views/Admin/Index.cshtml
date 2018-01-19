@@ -1,0 +1,73 @@
+﻿<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-6">
+            <div class="col-md-3">
+                <h3>
+                    Vendors
+                </h3>
+            </div>
+            <div class="col-md-9 pull-right">
+                <input id="searchVendor" type="search" placeholder="venodor" />
+                <input id="vendorsButton" class="btn btn-sm btn-info" value="Search" />
+            </div>
+            <div id="VendorsContent">
+                @await Component.InvokeAsync("Vendors")
+            </div>
+            <div>
+                <form method="POST" asp-controller="Vendors" asp-action="AddVendor">
+                    <div class="alert-danger">
+                        @TempData["VendorError"]
+                    </div>
+                    <input type="text" name="vendorName" />
+                    <input type="text" name="vendorWebsiteUrl" />
+                    <input type="submit" value="Add" />
+                </form>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-3">
+                <h3>
+                    Locations
+                </h3>
+            </div>
+            <div class="col-md-9 pull-right">
+                <input id="searchLocation" type="search" placeholder="location" />
+                <input id="locationsButton" class="btn btn-sm btn-info" value="Search" />
+            </div>
+            <div id="LocationsContent">
+                @await Component.InvokeAsync("Locations")
+            </div>
+            <div>
+                <form method="POST" asp-controller="Locations" asp-action="AddLocation">
+                    <div class="alert-danger">
+                        @TempData["LocationError"]
+                    </div>
+                    <input type="text" name="locationName" />
+                    <input type="submit" value="Add" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+
+    <script>
+        $('#vendorsButton').click(function () {
+
+            var search = document.getElementById("searchVendor").value
+
+            $("#VendorsContent").load('/vendors/updatevendors?search=' + search);
+        });
+
+        $('#locationsButton').click(function () {
+
+            var search = document.getElementById("searchLocation").value
+
+            $("#LocationsContent").load('/locations/updatelocations?search=' + search);
+        });
+
+    </script>
+}
+
+

@@ -1,0 +1,29 @@
+﻿@model VendorEditModel
+
+@{
+    ViewData["Title"] = "EditVendor";
+}
+
+<div>
+    <h2>
+        Edit vendor
+    </h2>
+    <form asp-controller="Vendors" asp-action="EditVendor">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div hidden>
+            <input asp-for="Id" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="WebsiteUrl"></label>
+            <input asp-for="WebsiteUrl" class="form-control" />
+        </div>
+
+        <input class="btn btn-danger" type="submit" value="Edit" />
+    </form>
+</div>

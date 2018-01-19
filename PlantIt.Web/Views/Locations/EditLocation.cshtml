@@ -1,0 +1,24 @@
+﻿@model LocationEditModel
+
+@{
+    ViewData["Title"] = "EditLocation";
+}
+
+<div>
+    <h2>
+        Edit location
+    </h2>
+    <form asp-controller="Locations" asp-action="EditLocation">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div hidden>
+            <input asp-for="Id" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+        </div>
+
+        <input class="btn btn-danger" type="submit" value="Edit" />
+    </form>
+</div>

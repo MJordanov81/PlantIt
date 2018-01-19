@@ -1,0 +1,76 @@
+﻿@model VendorsSearchModel
+
+@{
+    ViewData["Title"] = "Vendors";
+}
+
+<style>
+    tr {
+        display: block;
+    }
+
+    th, td {
+        width: 500px;
+    }
+
+    tbody {
+        display: block;
+        height: 300px;
+        overflow: auto;
+    } 
+</style>
+
+<div>
+    <table class="table table-bordered table-striped" style="max-height: 300px">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Plants
+                </th>
+                <th>
+                    Web site
+                </th>
+                <th>
+                    Edit/Delete
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var vendor in Model.Vendors)
+            {
+                <tr>
+                    <td>
+                        @vendor.Name
+                    </td>
+                    <td>
+                        @vendor.Plants
+                    </td>
+                    <td>
+                        <a href=@vendor.WebsiteUrl target="_blank">
+                            @vendor.WebsiteUrl
+                        </a>
+                    </td>
+                    <td>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <form class="form-inline" method="GET" asp-controller="Vendors" asp-action="EditVendor" asp-route-id=@vendor.Id>
+                                    <div asp-validation-summary="All" class="text-danger"></div>
+                                    <input class="btn btn-sm btn-warning" type="submit" value="O" />
+                                </form>
+                            </div>
+                            <div class="col-sm-6">
+                                <form class="form-inline" method="POST" asp-controller="Vendors" asp-action="DeleteVendor" asp-route-id=@vendor.Id>
+                                    <div asp-validation-summary="All" class="text-danger"></div>
+                                    <input class="btn btn-sm btn-danger" type="submit" value="X" />
+                                </form>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

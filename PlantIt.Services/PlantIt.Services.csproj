@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PlantIt.Common\PlantIt.Common.csproj" />
+    <ProjectReference Include="..\PlantIt.Data\PlantIt.Data.csproj" />
+    <ProjectReference Include="..\PlantIt.Domain\PlantIt.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,65 @@
+﻿@model LocationsSearchModel
+
+@{
+    ViewData["Title"] = "Locations";
+}
+
+<style>
+    tr {
+        display: block;
+    }
+
+    th, td {
+        width: 500px;
+    }
+
+    tbody {
+        display: block;
+        height: 300px;
+        overflow: auto;
+    }
+</style>
+
+<div>
+    <table class="table table-bordered table-striped" style="max-height: 300px">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Plants
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var location in Model.Locations)
+            {
+                <tr>
+                    <td>
+                        @location.Name
+                    </td>
+                    <td>
+                       @location.Plants
+                    </td>
+                    <td>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <form class="form-inline" method="GET" asp-controller="Locations" asp-action="EditLocation" asp-route-id=@location.Id>
+                                    <div asp-validation-summary="All" class="text-danger"></div>
+                                    <input class="btn btn-sm btn-warning" type="submit" value="O" />
+                                </form>
+                            </div>
+                            <div class="col-sm-6">
+                                <form class="form-inline" method="POST" asp-controller="Locations" asp-action="DeleteLocations" asp-route-id=@location.Id>
+                                    <div asp-validation-summary="All" class="text-danger"></div>
+                                    <input class="btn btn-sm btn-danger" type="submit" value="X" />
+                                </form>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
